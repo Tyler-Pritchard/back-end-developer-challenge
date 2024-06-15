@@ -1,9 +1,8 @@
-# DDB Back End Developer Challenge
+# QuestFightGold
 
-### Overview
-This task focuses on creating an API for managing a player character's Hit Points (HP) within our game. The API will enable clients to perform various operations related to HP, including dealing damage of different types, considering character resistances and immunities, healing, and adding temporary Hit Points. The task requires building a service that interacts with HP data provided in the `briv.json` file and persists throughout the application's lifetime.
+An API for managing a player character's Hit Points (HP) within our game. The API will enable clients to perform various operations related to HP, including dealing damage of different types, considering character resistances and immunities, healing, and adding temporary Hit Points.
 
-### Task Requirements
+## Description
 
 #### API Operations
 1. **Deal Damage**
@@ -21,43 +20,47 @@ This task focuses on creating an API for managing a player character's Hit Point
 
     > Imagine a player character named "Eldric" currently has 11 Hit Points (HP) and no temporary Hit Points. He finds a magical item that grants him an additional 10 HP during the next fight. When the attacker rolls a 19, Eldric will lose all 10 temporary Hit Points and 9 from his player HP.
 
-#### Implementation Details
-- Build the API using either C# or NodeJS.
-- Ensure that character information, including HP, is initialized during the start of the application. Developers do not need to calculate HP; it is provided in the `briv.json` file.
-- Retrieve character information, including HP, from the `briv.json` file.
+## Getting Started
+
+### Dependencies
+
+* NodeJS
+* Express
+
+### Installing
+
+* Download repo and open the project 
+* Install dependencies:
+    ```
+    npm install
+    ```
+
+### Executing program
+
+* Start application
+```
+npm start
+```
+* Navigate to http://localhost:3000 in a web browser
+
+## Help
+
+Advise for common problems or issues.
+```
+npm run help
+```
+
+## Authors
+
+Tyler Pritchard  
 
 
-#### Data Storage
-- You have the flexibility to choose the data storage method for character information.
+## Version History
 
-### Instructions to Run Locally
-1. Clone the repository or obtain the project files.
-2. Install any required dependencies using your preferred package manager.
-3. Configure the API with necessary settings (e.g., database connection if applicable).
-4. Build and run the API service locally.
-5. Utilize the provided `briv.json` file as a sample character data, including HP, for testing the API.
+* 0.1
+    * Initial Release
 
-### Additional Notes
-- Temporary Hit Points take precedence over the regular HP pool and cannot be healed.
-- Characters with resistance take half damage, while characters with immunity take no damage from a damage type.
-- Use character filename as identifier
 
-#### Possible Damage Types in D&D
-Here is a list of possible damage types that can occur in Dungeons & Dragons (D&D). These damage types should be considered when dealing damage or implementing character resistances and immunities:
-- Bludgeoning
-- Piercing
-- Slashing
-- Fire
-- Cold
-- Acid
-- Thunder
-- Lightning
-- Poison
-- Radiant
-- Necrotic
-- Psychic
-- Force
+## Acknowledgments
 
-If you have any questions or require clarification, please reach out to your Wizards of the Coast contact, and we will provide prompt assistance.
-
-Good luck with the implementation!
+* [Trello board](https://trello.com/invite/b/QW1cz0oh/ATTI161b7305bb6178bc21e1b163ea1d3c26703A921B/questfightgold)

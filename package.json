@@ -1,0 +1,24 @@
+{
+  "name": "questfightgold",
+  "version": "1.0.0",
+  "description": "A service that interacts with HP data",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "help": "node ./scripts/help.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tyler-Pritchard/back-end-developer-challenge.git"
+  },
+  "author": "Tyler Pritchard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tyler-Pritchard/back-end-developer-challenge/issues"
+  },
+  "homepage": "https://github.com/Tyler-Pritchard/back-end-developer-challenge#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

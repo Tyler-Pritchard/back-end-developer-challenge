@@ -43,6 +43,13 @@ An API for managing a player character's Hit Points (HP) within our game. The AP
 npm start
 ```
 * Navigate to http://localhost:3000 in a web browser
+* Swagger docs are available at http://localhost:3000/api-docs
+* Routes:
+```
+        /damage
+        /heal
+        /temp-hp
+```
 
 ## Help
 

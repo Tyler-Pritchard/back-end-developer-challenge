@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+const damageRoute = require('./damage');
+const healRoute = require('./heal');
+const tempHpRoute = require('./temp-hp');
+
 /**
  * @swagger
  * components:
@@ -114,65 +118,7 @@ const router = express.Router();
  *             schema:
  *               $ref: '#/components/schemas/DamageResponse'
  */
-router.post('/damage', (req, res) => {
-  const { characterId, damageType, damageAmount } = req.body;
-
-  // For demonstration, let's log the request body to ensure we are receiving it correctly.
-  console.log('Received damage request:', req.body);
-
-  // Simulate processing the damage
-  // For now, let's assume the character's remaining HP is calculated here
-  const remainingHP = 15; // Placeholder value
-
-  // Construct the response object
-  const response = {
-    characterId: characterId,
-    remainingHP: remainingHP,
-    character: {
-      name: "Briv",
-      level: 5,
-      hitPoints: remainingHP,
-      classes: [
-        {
-          name: "fighter",
-          hitDiceValue: 10,
-          classLevel: 5
-        }
-      ],
-      stats: {
-        strength: 15,
-        dexterity: 12,
-        constitution: 14,
-        intelligence: 13,
-        wisdom: 10,
-        charisma: 8
-      },
-      items: [
-        {
-          name: "Ioun Stone of Fortitude",
-          modifier: {
-            affectedObject: "stats",
-            affectedValue: "constitution",
-            value: 2
-          }
-        }
-      ],
-      defenses: [
-        {
-          type: "fire",
-          defense: "immunity"
-        },
-        {
-          type: "slashing",
-          defense: "resistance"
-        }
-      ]
-    }
-  };
-
-  // Send the response back to the client
-  res.json(response);
-});
+router.use('/damage', damageRoute);
 
 
 /**
@@ -219,65 +165,7 @@ router.post('/damage', (req, res) => {
  *             schema:
  *               $ref: '#/components/schemas/HealResponse'
  */
-router.post('/heal', (req, res) => {
-  const { characterId, healAmount } = req.body;
-
-  // For demonstration, let's log the request body to ensure we are receiving it correctly.
-  console.log('Received heal request:', req.body);
-
-  // Simulate processing the healing
-  // For now, let's assume the character's current HP is calculated here
-  const currentHP = 30; // Placeholder value
-
-  // Construct the response object
-  const response = {
-    characterId: characterId,
-    currentHP: currentHP,
-    character: {
-      name: "Briv",
-      level: 5,
-      hitPoints: currentHP,
-      classes: [
-        {
-          name: "fighter",
-          hitDiceValue: 10,
-          classLevel: 5
-        }
-      ],
-      stats: {
-        strength: 15,
-        dexterity: 12,
-        constitution: 14,
-        intelligence: 13,
-        wisdom: 10,
-        charisma: 8
-      },
-      items: [
-        {
-          name: "Ioun Stone of Fortitude",
-          modifier: {
-            affectedObject: "stats",
-            affectedValue: "constitution",
-            value: 2
-          }
-        }
-      ],
-      defenses: [
-        {
-          type: "fire",
-          defense: "immunity"
-        },
-        {
-          type: "slashing",
-          defense: "resistance"
-        }
-      ]
-    }
-  };
-
-  // Send the response back to the client
-  res.json(response);
-});
+router.use('/heal', healRoute);
 
 
 /**
@@ -324,65 +212,7 @@ router.post('/heal', (req, res) => {
  *             schema:
  *               $ref: '#/components/schemas/TempHPResponse'
  */
-router.post('/temp-hp', (req, res) => {
-  const { characterId, tempHPAmount } = req.body;
-
-  // For demonstration, let's log the request body to ensure we are receiving it correctly.
-  console.log('Received temp HP request:', req.body);
-
-  // Simulate processing the temporary HP
-  // For now, let's assume the character's current temporary HP is calculated here
-  const currentTempHP = 10; // Placeholder value
-
-  // Construct the response object
-  const response = {
-    characterId: characterId,
-    currentTempHP: currentTempHP,
-    character: {
-      name: "Briv",
-      level: 5,
-      hitPoints: 25,
-      classes: [
-        {
-          name: "fighter",
-          hitDiceValue: 10,
-          classLevel: 5
-        }
-      ],
-      stats: {
-        strength: 15,
-        dexterity: 12,
-        constitution: 14,
-        intelligence: 13,
-        wisdom: 10,
-        charisma: 8
-      },
-      items: [
-        {
-          name: "Ioun Stone of Fortitude",
-          modifier: {
-            affectedObject: "stats",
-            affectedValue: "constitution",
-            value: 2
-          }
-        }
-      ],
-      defenses: [
-        {
-          type: "fire",
-          defense: "immunity"
-        },
-        {
-          type: "slashing",
-          defense: "resistance"
-        }
-      ]
-    }
-  };
-
-  // Send the response back to the client
-  res.json(response);
-});
+router.use('/temp-hp', tempHpRoute);
 
 
 module.exports = router;

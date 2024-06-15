@@ -26,6 +26,7 @@ An API for managing a player character's Hit Points (HP) within our game. The AP
 
 * NodeJS
 * Express
+* SwaggerUI
 
 ### Installing
 

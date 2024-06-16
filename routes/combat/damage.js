@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Character = require('../../models/characterModel');
 
-// **********************************************
-// **TODO: FACTOR TEMP-HP INTO EFFECTIVE DAMAGE**
-// **********************************************
 // Helper function to calculate effective damage
 function calculateEffectiveDamage(character, damageType, damageAmount) {
   const defense = character.defenses.find(def => def.type === damageType);
@@ -34,6 +31,9 @@ router.post('/', async (req, res) => {
   // Log the request body to ensure we are receiving it correctly.
   console.log('Received damage request:', req.body);
 
+  // **********************************************
+  // **TODO: FACTOR TEMP-HP INTO DAMAGE**
+  // **********************************************
   // Calculate effective damage
   const effectiveDamage = calculateEffectiveDamage(character, damageType, damageAmount);
   character.hitPoints -= effectiveDamage;

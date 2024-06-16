@@ -93,7 +93,7 @@ npm start
 
 ## Help
 
-Advise for common problems or issues.
+Advice for common problems or issues.
 ```
 npm run help
 ```

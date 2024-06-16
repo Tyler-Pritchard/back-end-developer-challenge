@@ -18,6 +18,8 @@ const tempHpRoute = require('./combat/temp-hp');
  *           type: integer
  *         hitPoints:
  *           type: integer
+ *         tempHitPoints:
+ *           type: integer
  *         classes:
  *           type: array
  *           items:

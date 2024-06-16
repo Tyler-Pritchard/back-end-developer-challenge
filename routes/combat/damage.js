@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+// TODO: FACTOR TEMP-HP INTO EFFECTIVE DAMAGE
 // Helper function to calculate effective damage
 function calculateEffectiveDamage(character, damageType, damageAmount) {
   const defense = character.defenses.find(def => def.type === damageType);

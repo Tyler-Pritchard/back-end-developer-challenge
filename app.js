@@ -5,6 +5,13 @@ const port = 3000;
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+// Load character data
+const loadCharacterData = require('./scripts/loadCharacterData');
+const characterData = loadCharacterData();
+
+// Store character data in app locals for access in routes
+app.locals.characterData = characterData;
+
 // Import routes
 const apiRoutes = require('./routes');
 

@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const damageRoute = require('./damage');
-const healRoute = require('./heal');
-const tempHpRoute = require('./temp-hp');
+const damageRoute = require('./combat/damage');
+const healRoute = require('./combat/heal');
+const tempHpRoute = require('./combat/temp-hp');
 
 /**
  * @swagger

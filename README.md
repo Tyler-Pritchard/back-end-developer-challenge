@@ -11,8 +11,10 @@ An API for managing a player character's Hit Points (HP) within our game. The AP
 
     > Suppose a player character is hit by an attack that deals Piercing damage, and the attacker rolls a 14 on the damage's Hit Die (with a Piercing damage type). `[Character Hit Points - damage: 25 - 14 = 11]`
 
+
 2. **Heal**
     - Enable clients to heal a player character, increasing their HP.
+
 
 3. **Add Temporary Hit Points**
     - Implement the functionality to add temporary Hit Points to a player character.
@@ -46,9 +48,9 @@ npm start
 * Swagger docs are available at http://localhost:3000/api-docs
 * Routes:
 ```
-        /damage
-        /heal
-        /temp-hp
+        /api/damage
+        /api/heal
+        /api/temp-hp
 ```
 
 #### Sample /damage POST Request Body
@@ -57,6 +59,14 @@ npm start
         "characterId": "briv",
         "damageType": "slashing",
         "damageAmount": 10
+      }
+```
+
+#### Sample /heal POST Request Body
+```
+      {
+        "characterId": "briv",
+        "healAmount": 5
       }
 ```
 

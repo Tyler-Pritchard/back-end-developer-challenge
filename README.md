@@ -51,6 +51,15 @@ npm start
         /temp-hp
 ```
 
+#### Sample /damage POST Request Body
+```
+      {
+        "characterId": "briv",
+        "damageType": "slashing",
+        "damageAmount": 10
+      }
+```
+
 ## Help
 
 Advise for common problems or issues.
@@ -72,3 +81,9 @@ Tyler Pritchard
 ## Acknowledgments
 
 * [Trello board](https://trello.com/invite/b/QW1cz0oh/ATTI161b7305bb6178bc21e1b163ea1d3c26703A921B/questfightgold)
+
+
+
+##### Questions for D&D:
+
+* How should the resistance amount be determined in the damage function?  How should Possible Damage Types be implemented?

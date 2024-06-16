@@ -122,7 +122,6 @@ const tempHpRoute = require('./combat/temp-hp');
  */
 router.use('/damage', damageRoute);
 
-
 /**
  * @swagger
  * components:
@@ -169,7 +168,6 @@ router.use('/damage', damageRoute);
  */
 router.use('/heal', healRoute);
 
-
 /**
  * @swagger
  * components:
@@ -215,6 +213,5 @@ router.use('/heal', healRoute);
  *               $ref: '#/components/schemas/TempHPResponse'
  */
 router.use('/temp-hp', tempHpRoute);
-
 
 module.exports = router;

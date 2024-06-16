@@ -29,14 +29,27 @@ An API for managing a player character's Hit Points (HP) within our game. The AP
 * NodeJS
 * Express
 * SwaggerUI
+* Mongoose
+* Dotenv
+* CORS
 
 ### Installing
 
+#### Set Up Application
 * Download repo and open the project 
-* Install dependencies:
+* Navigate to root directory and install the dependencies:
     ```
     npm install
     ```
+#### Configure Database
+* Create a new [MongoDB Cluster](https://cloud.mongodb.com)
+* Create a .env file to store the cluster username and password
+    ```
+    MONGODB_USERNAME=<username>
+    MONGODB_PASSWORD=<password>
+    ```
+* Install MongoDB on Your Machine
+    - Follow the installation guide for your operating system from the [MongoDB documentation](https://www.mongodb.com/docs/manual/installation/)
 
 ### Executing program
 
@@ -104,4 +117,4 @@ Tyler Pritchard
 
 ##### Questions for D&D:
 
-* How should the resistance amount be determined in the damage function?  How should Possible Damage Types be implemented?
+* How should the resistance amount be determined in the damage function?  How should Possible Damage Types be incorporated as a data structure?

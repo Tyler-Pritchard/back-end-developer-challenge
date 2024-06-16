@@ -16,7 +16,9 @@ router.post('/', (req, res) => {
   // Retrieve character data
   const characterHP = character.hitPoints;
 
+  // **********************************
   // **TODO: REMOVE PLACEHOLDER MAXHP**
+  // **********************************
   const maxHP = 50; // Placeholder value for max HP
 
   // Calculate new HP without exceeding max HP

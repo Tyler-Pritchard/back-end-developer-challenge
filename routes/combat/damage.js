@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-// TODO: FACTOR TEMP-HP INTO EFFECTIVE DAMAGE
+// **********************************************
+// **TODO: FACTOR TEMP-HP INTO EFFECTIVE DAMAGE**
+// **********************************************
 // Helper function to calculate effective damage
 function calculateEffectiveDamage(character, damageType, damageAmount) {
   const defense = character.defenses.find(def => def.type === damageType);
@@ -10,7 +12,9 @@ function calculateEffectiveDamage(character, damageType, damageAmount) {
     if (defense.defense === 'immunity') {
       return 0; // No damage if immune
     }
+    // ****************************************
     // **TODO: DETERMINE RESISTANCE AMOUNT(S)**
+    // ****************************************
     if (defense.defense === 'resistance') {
       return damageAmount / 2; // Half damage if resistant
     }

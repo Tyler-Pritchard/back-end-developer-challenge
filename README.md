@@ -70,6 +70,14 @@ npm start
       }
 ```
 
+#### Sample /temp-hp POST Request Body
+```
+    {
+        "characterId": "briv",
+        "tempHPAmount": 15
+    }
+```
+
 ## Help
 
 Advise for common problems or issues.

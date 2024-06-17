@@ -96,6 +96,11 @@ npm start
     }
 ```
 
+## Testing in Development
+  ```
+  npm test
+  ```
+
 ## Help
 
 Advice for common problems or issues.
@@ -123,4 +128,5 @@ Tyler Pritchard
 ##### Questions for D&D:
 
 * How should the resistance amount be determined in the damage function?  How should Possible Damage Types be incorporated (as a data structure, a table)?
+* Are damage resistances calculated before or after the temp-hp?
 * Any specific tests that should be written?

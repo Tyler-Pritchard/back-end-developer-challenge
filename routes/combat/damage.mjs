@@ -28,6 +28,18 @@ router.post('/', async (req, res) => {
       }
     }
 
+    // Apply damage to temporary hit points first
+    if (character.tempHitPoints > 0) {
+      character.tempHitPoints -= damage;
+      if (character.tempHitPoints < 0) {
+        damage = Math.abs(character.tempHitPoints);
+        character.tempHitPoints = 0;
+      } else {
+        damage = 0;
+      }
+    }
+
+    // Apply remaining damage to hit points
     character.hitPoints = Math.max(character.hitPoints - damage, 0);
     await character.save();
 

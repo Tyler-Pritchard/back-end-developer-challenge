@@ -10,6 +10,7 @@ const CharacterSchema = new Schema({
   name: String,
   level: Number,
   hitPoints: Number,
+  maxHP: Number, // Add maxHP field
   tempHitPoints: { type: Number, default: 0 },
   classes: [
     {
@@ -37,6 +38,14 @@ const CharacterSchema = new Schema({
     }
   ],
   defenses: [DefenseSchema]
+});
+
+// Middleware to set maxHP before saving
+CharacterSchema.pre('save', function(next) {
+  if (this.isNew) {
+    this.maxHP = this.hitPoints; // Initialize maxHP with hitPoints
+  }
+  next();
 });
 
 const Character = mongoose.model('Character', CharacterSchema);

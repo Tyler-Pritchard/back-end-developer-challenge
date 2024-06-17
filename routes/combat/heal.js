@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
 
   // Retrieve character data
   const characterHP = character.hitPoints;
-  const maxHP = 50; // Placeholder value for max HP
+  const maxHP = character.maxHP; // Use maxHP from the character data
 
   // Calculate new HP without exceeding max HP
   const newHP = Math.min(characterHP + healAmount, maxHP);

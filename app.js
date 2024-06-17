@@ -2,20 +2,20 @@ const express = require('express');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const cors = require('cors'); // Import the cors package
+const cors = require('cors');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 dotenv.config(); // Load environment variables from .env file
 const MONGODB_PASSWORD = process.env.MONGODB_PASSWORD;
 const USER_NAME = process.env.MONGODB_USERNAME;
 
-// Middleware to parse JSON bodies
-app.use(express.json());
-
 // Enable CORS
 app.use(cors());
+
+// Middleware to parse JSON bodies
+app.use(express.json());
 
 // MongoDB connection
 const uri = `mongodb+srv://${USER_NAME}:${MONGODB_PASSWORD}@character-stats.ljnqjb4.mongodb.net/?retryWrites=true&w=majority&appName=character-stats`;

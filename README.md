@@ -69,7 +69,7 @@ npm start
 #### Sample /damage POST Request Body
 ```
       {
-        "characterId": "briv",
+        "characterId": "Briv",
         "damageType": "slashing",
         "damageAmount": 10
       }
@@ -78,7 +78,7 @@ npm start
 #### Sample /heal POST Request Body
 ```
       {
-        "characterId": "briv",
+        "characterId": "Briv",
         "healAmount": 5
       }
 ```
@@ -86,7 +86,7 @@ npm start
 #### Sample /temp-hp POST Request Body
 ```
     {
-        "characterId": "briv",
+        "characterId": "Briv",
         "tempHPAmount": 15
     }
 ```

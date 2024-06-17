@@ -5,10 +5,15 @@ const Character = require('../../models/characterModel');
 // Heal: This route will handle healing a character.
 router.post('/', async (req, res) => {
   const { characterId, healAmount } = req.body;
-  const character = await Character.findOne({ name: characterId });
 
   if (!characterId || typeof healAmount !== 'number') {
     return res.status(400).json({ error: 'Invalid input' });
+  }
+
+  const character = await Character.findOne({ name: characterId });
+
+  if (!character) {
+    return res.status(404).json({ error: 'Character not found' });
   }
 
   // Log the request body to ensure we are receiving it correctly.
@@ -16,11 +21,8 @@ router.post('/', async (req, res) => {
 
   // Retrieve character data
   const characterHP = character.hitPoints;
-  // **********************************
-  // **TODO: REMOVE PLACEHOLDER MAXHP**
-  // **********************************
   const maxHP = 50; // Placeholder value for max HP
-  
+
   // Calculate new HP without exceeding max HP
   const newHP = Math.min(characterHP + healAmount, maxHP);
 

@@ -71,7 +71,7 @@ npm start
         /api/temp-hp
 ```
 
-#### Sample /damage POST Request Body
+#### Sample /damage POST Request Body (characterId is case sensitive)
 ```
       {
         "characterId": "Briv",
@@ -80,7 +80,7 @@ npm start
       }
 ```
 
-#### Sample /heal POST Request Body
+#### Sample /heal POST Request Body (characterId is case sensitive)
 ```
       {
         "characterId": "Briv",
@@ -88,7 +88,7 @@ npm start
       }
 ```
 
-#### Sample /temp-hp POST Request Body
+#### Sample /temp-hp POST Request Body (characterId is case sensitive)
 ```
     {
         "characterId": "Briv",
@@ -122,4 +122,5 @@ Tyler Pritchard
 
 ##### Questions for D&D:
 
-* How should the resistance amount be determined in the damage function?  How should Possible Damage Types be incorporated as a data structure?
+* How should the resistance amount be determined in the damage function?  How should Possible Damage Types be incorporated (as a data structure, a table)?
+* Any specific tests that should be written?

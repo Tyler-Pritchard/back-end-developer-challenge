@@ -48,7 +48,7 @@ An API for managing a player character's Hit Points (HP) within our game. The AP
     ```
 #### Configure Database
 * Create a new [MongoDB Cluster](https://cloud.mongodb.com)
-* Create a .env file to store the cluster username and password
+* Create a .env file in the project root directory to store the cluster username and password
     ```
     MONGODB_USERNAME=<username>
     MONGODB_PASSWORD=<password>

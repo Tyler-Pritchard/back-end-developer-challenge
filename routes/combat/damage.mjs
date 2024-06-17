@@ -3,48 +3,42 @@ import Character from '../../models/characterModel.mjs';
 
 const router = express.Router();
 
-// Helper function to calculate effective damage
-function calculateEffectiveDamage(character, damageType, damageAmount) {
-  const defense = character.defenses.find(def => def.type === damageType);
-  if (defense) {
-    if (defense.defense === 'immunity') {
-      return 0; // No damage if immune
-    }
-    if (defense.defense === 'resistance') {
-      return damageAmount / 2; // Half damage if resistant
-    }
-  }
-  return damageAmount; // Full damage if no special defense
-}
-
-// Deal Damage: This route will handle applying damage to a character.
 router.post('/', async (req, res) => {
-  const { characterId, damageType, damageAmount } = req.body;
-  const character = await Character.findOne({ name: characterId });
+  try {
+    const { characterId, damageType, damageAmount } = req.body;
 
-  if (!characterId || !damageType || typeof damageAmount !== 'number') {
-    return res.status(400).json({ error: 'Invalid input' });
+    if (!characterId || !damageType || !damageAmount) {
+      return res.status(400).json({ error: 'Invalid input' });
+    }
+
+    const character = await Character.findOne({ name: characterId });
+
+    if (!character) {
+      return res.status(404).json({ error: 'Character not found' });
+    }
+
+    let damage = damageAmount;
+
+    const defense = character.defenses.find(d => d.type === damageType);
+    if (defense) {
+      if (defense.defense === 'immunity') {
+        damage = 0;
+      } else if (defense.defense === 'resistance') {
+        damage = Math.floor(damage / 2);
+      }
+    }
+
+    character.hitPoints = Math.max(character.hitPoints - damage, 0);
+    await character.save();
+
+    res.json({
+      characterId: character.name,
+      remainingHP: character.hitPoints,
+      character,
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Internal server error' });
   }
-
-  // Log the request body to ensure we are receiving it correctly.
-  console.log('Received damage request:', req.body);
-
-  // Calculate effective damage
-  const effectiveDamage = calculateEffectiveDamage(character, damageType, damageAmount);
-  character.hitPoints -= effectiveDamage;
-
-  // Save updated character data
-  await character.save();
-
-  // Construct the response object
-  const response = {
-    characterId: characterId,
-    remainingHP: character.hitPoints,
-    character: character.toObject()
-  };
-
-  // Send the response back to the client
-  res.json(response);
 });
 
 export default router;

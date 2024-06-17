@@ -1,7 +1,7 @@
 import express from 'express';
-import damageRoute from './combat/damage.mjs'; // Adjust the path if necessary
-import healRoute from './combat/heal.mjs'; // Adjust the path if necessary
-import tempHpRoute from './combat/temp-hp.mjs'; // Adjust the path if necessary
+import damageRoute from './combat/damage.mjs';
+import healRoute from './combat/heal.mjs';
+import tempHpRoute from './combat/temp-hp.mjs';
 
 const router = express.Router();
 

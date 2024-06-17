@@ -15,7 +15,7 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ['./routes/*.mjs'], // Ensure the correct path to your route files
+  apis: ['./routes/combat/*.mjs', './routes/index.mjs'], // Include the index.mjs file
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);

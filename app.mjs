@@ -1,23 +1,22 @@
-const express = require('express');
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const cors = require('cors');
+import express from 'express';
+import { MongoClient, ServerApiVersion } from 'mongodb';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import loadCharacterData from './scripts/loadCharacterData.mjs';
+import setupSwagger from './swagger.mjs';
+import apiRoutes from './routes/index.mjs';
 
 const app = express();
 const port = 3000;
 
-dotenv.config(); // Load environment variables from .env file
+dotenv.config();
 const MONGODB_PASSWORD = process.env.MONGODB_PASSWORD;
 const USER_NAME = process.env.MONGODB_USERNAME;
 
-// Enable CORS
 app.use(cors());
-
-// Middleware to parse JSON bodies
 app.use(express.json());
 
-// MongoDB connection
 const uri = `mongodb+srv://${USER_NAME}:${MONGODB_PASSWORD}@character-stats.ljnqjb4.mongodb.net/?retryWrites=true&w=majority&appName=character-stats`;
 const client = new MongoClient(uri, {
   serverApi: {
@@ -29,9 +28,7 @@ const client = new MongoClient(uri, {
 
 async function connectToMongoDB() {
   try {
-    // Connect the client to the server (optional starting in v4.7)
     await client.connect();
-    // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } catch (err) {
@@ -41,7 +38,6 @@ async function connectToMongoDB() {
 
 connectToMongoDB();
 
-// Mongoose connection using the same URI
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -51,26 +47,16 @@ mongoose.connect(uri, {
   console.error('Error connecting to MongoDB with Mongoose:', err);
 });
 
-// Load character data
-const loadCharacterData = require('./scripts/loadCharacterData');
-
 (async () => {
   const characterData = await loadCharacterData();
-
-  // Store character data in app locals for access in routes
   app.locals.characterData = characterData;
 
-  // Import routes
-  const apiRoutes = require('./routes');
   app.use('/api', apiRoutes);
 
-  // Default message
   app.get('/', (req, res) => {
     res.send('Quest! Fight! Gold!');
   });
 
-  // Import and use Swagger
-  const setupSwagger = require('./swagger');
   setupSwagger(app);
 
   app.listen(port, () => {
@@ -78,3 +64,5 @@ const loadCharacterData = require('./scripts/loadCharacterData');
     console.log(`Swagger docs are available at http://localhost:${port}/api-docs`);
   });
 })();
+
+export { app as server };

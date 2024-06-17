@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
+import damageRoute from './combat/damage.mjs'; // Adjust the path if necessary
+import healRoute from './combat/heal.mjs'; // Adjust the path if necessary
+import tempHpRoute from './combat/temp-hp.mjs'; // Adjust the path if necessary
 
-const damageRoute = require('./combat/damage');
-const healRoute = require('./combat/heal');
-const tempHpRoute = require('./combat/temp-hp');
+const router = express.Router();
 
 /**
  * @swagger
@@ -122,7 +122,6 @@ const tempHpRoute = require('./combat/temp-hp');
  */
 router.use('/damage', damageRoute);
 
-
 /**
  * @swagger
  * components:
@@ -168,7 +167,6 @@ router.use('/damage', damageRoute);
  *               $ref: '#/components/schemas/HealResponse'
  */
 router.use('/heal', healRoute);
-
 
 /**
  * @swagger
@@ -216,4 +214,4 @@ router.use('/heal', healRoute);
  */
 router.use('/temp-hp', tempHpRoute);
 
-module.exports = router;
+export default router;

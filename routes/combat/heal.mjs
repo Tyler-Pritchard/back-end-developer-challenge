@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import Character from '../../models/characterModel.mjs';
+
 const router = express.Router();
-const Character = require('../../models/characterModel');
 
 // Heal: This route will handle healing a character.
 router.post('/', async (req, res) => {
@@ -43,4 +44,4 @@ router.post('/', async (req, res) => {
   res.json(response);
 });
 
-module.exports = router;
+export default router;

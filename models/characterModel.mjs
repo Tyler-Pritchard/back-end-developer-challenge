@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const DefenseSchema = new Schema({
@@ -50,4 +50,4 @@ CharacterSchema.pre('save', function(next) {
 
 const Character = mongoose.model('Character', CharacterSchema);
 
-module.exports = Character;
+export default Character;

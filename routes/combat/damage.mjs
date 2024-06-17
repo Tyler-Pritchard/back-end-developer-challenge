@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import Character from '../../models/characterModel.mjs';
+
 const router = express.Router();
-const Character = require('../../models/characterModel');
 
 // Helper function to calculate effective damage
 function calculateEffectiveDamage(character, damageType, damageAmount) {
@@ -9,9 +10,6 @@ function calculateEffectiveDamage(character, damageType, damageAmount) {
     if (defense.defense === 'immunity') {
       return 0; // No damage if immune
     }
-    // ****************************************
-    // **TODO: DETERMINE RESISTANCE AMOUNT(S)**
-    // ****************************************
     if (defense.defense === 'resistance') {
       return damageAmount / 2; // Half damage if resistant
     }
@@ -31,9 +29,6 @@ router.post('/', async (req, res) => {
   // Log the request body to ensure we are receiving it correctly.
   console.log('Received damage request:', req.body);
 
-  // **********************************************
-  // **TODO: FACTOR TEMP-HP INTO DAMAGE**
-  // **********************************************
   // Calculate effective damage
   const effectiveDamage = calculateEffectiveDamage(character, damageType, damageAmount);
   character.hitPoints -= effectiveDamage;
@@ -52,4 +47,4 @@ router.post('/', async (req, res) => {
   res.json(response);
 });
 
-module.exports = router;
+export default router;

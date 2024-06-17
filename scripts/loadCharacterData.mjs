@@ -1,6 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const Character = require('../models/characterModel');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import Character from '../models/characterModel.mjs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 async function loadCharacterData() {
   const filePath = path.join(__dirname, '../briv.json');
@@ -15,4 +19,4 @@ async function loadCharacterData() {
   return characterData;
 }
 
-module.exports = loadCharacterData;
+export default loadCharacterData;

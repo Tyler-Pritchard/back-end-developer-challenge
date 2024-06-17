@@ -33,6 +33,11 @@ An API for managing a player character's Hit Points (HP) within our game. The AP
 * Dotenv
 * CORS
 
+##### Development
+
+* Mocha
+* Chai
+
 ### Installing
 
 #### Set Up Application

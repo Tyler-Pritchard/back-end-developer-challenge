@@ -8,7 +8,7 @@ import setupSwagger from './swagger.mjs';
 import apiRoutes from './routes/index.mjs';
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 dotenv.config();
 const MONGODB_PASSWORD = process.env.MONGODB_PASSWORD;

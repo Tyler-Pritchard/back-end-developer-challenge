@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
   try {
     const { characterId, tempHPAmount } = req.body;
 
-    if (!characterId || !tempHPAmount) {
+    if (!characterId || !tempHPAmount || isNaN(tempHPAmount)) {
       return res.status(400).json({ error: 'Invalid input' });
     }
 

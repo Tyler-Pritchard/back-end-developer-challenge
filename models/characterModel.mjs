@@ -43,7 +43,9 @@ const CharacterSchema = new Schema({
 // Middleware to set maxHP before saving
 CharacterSchema.pre('save', function(next) {
   if (this.isNew) {
-    this.maxHP = this.hitPoints; // Initialize maxHP with hitPoints
+    if (!this.maxHP) {
+      this.maxHP = this.hitPoints; // Initialize maxHP with hitPoints
+    }
   }
   next();
 });

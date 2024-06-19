@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
   try {
     const { characterId, healAmount } = req.body;
 
-    if (!characterId || !healAmount) {
+    if (!characterId || !healAmount || isNaN(healAmount) || Number(healAmount) <= 0) {
       return res.status(400).json({ error: 'Invalid input' });
     }
 
@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
       return res.status(404).json({ error: 'Character not found' });
     }
 
-    character.hitPoints = Math.min(character.hitPoints + healAmount, character.maxHP);
+    character.hitPoints = Math.min(character.hitPoints + Number(healAmount), character.maxHP);
     await character.save();
 
     res.json({
